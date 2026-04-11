@@ -1,3 +1,4 @@
+import json
 from PIL import Image
 import gui_builder, text_generator
 from pathlib import Path
@@ -23,30 +24,8 @@ class Card():
                 field["position"] = [x + y for x, y in zip(field["position"], border_size)]
             text = text_generator.generate_text(field["text"], tuple(field["color"]))
             self.image.paste(text, tuple(field["position"]), text)
-
-test_card_info = {
-    "name":"test",
-    "dimensions":[200, 300],
-    "base":"frame",
-    "fields":[
-        {
-            "dimensions":[188, 100],
-            "position":[6, 20],
-            "frame":"slot"
-        }
-    ],
-    "text_fields":[
-        {
-            "background":{
-                "frame":"frame",
-                "dimensions":[100, 18]
-            },
-            "position":[0, 0],
-            "text":"test card",
-            "color":[0, 0, 0]
-        }
-    ]
-}
+with open(f"{DIR}/test_card.json", "r") as file:
+    test_card_info = json.load(file)
 
 im = Card(test_card_info)
 im.image = im.image.resize((8*im.image.width, 8*im.image.height), resample= Image.BOX)

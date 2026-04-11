@@ -1,0 +1,23 @@
+{
+    "name":"test",
+    "dimensions":[200, 300],
+    "base":"frame",
+    "fields":[
+        {
+            "dimensions":[188, 100],
+            "position":[6, 20],
+            "frame":"slot"
+        }
+    ],
+    "text_fields":[
+        {
+            "background":{
+                "frame":"frame",
+                "dimensions":[100, 18]
+            },
+            "position":[0, 0],
+            "text":"test card",
+            "color":[0, 0, 0]
+        }
+    ]
+}
