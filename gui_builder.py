@@ -3,14 +3,7 @@ from pathlib import Path
 from PIL import Image
 DIR = Path(__file__).resolve().parent
 
-# input_slots = int(input("Input Slots: "))
-# output_slots = int(input("Output Slots: "))
-# base gui colors
-# border = (0, 0, 0)
-# background = (198, 198, 198)
-# top_left = (255, 255, 255)
-# bottom_right = (85, 85, 85)
-def create_base_gui(width: int, height: int, frame: str = "frame") -> Image.Image:
+def create_base_gui(width: int, height: int, frame: str = "frame") -> tuple[Image.Image, tuple[int, int]]:
     """Creates an empty GUI"""
     
     with Image.open(f"{DIR}/gui/{frame}/corner_top_left.png") as img:
@@ -43,7 +36,7 @@ def create_base_gui(width: int, height: int, frame: str = "frame") -> Image.Imag
         center = img.resize((width, height))
         basegui.paste(im=center, box=(frame_width, frame_height))
     
-    return basegui
+    return basegui, (frame_width, frame_height)
 
 def add_slots(gui: Image.Image, input_slots: int, output_slots: int) -> Image.Image:
     vertical = 8
@@ -102,10 +95,10 @@ def create_gui(input_slots: int, output_slots: int) -> Image.Image:
     gui = add_slots(gui, input_slots, output_slots)
     return gui
 
-#basegui = create_gui(4, 4)
-base = create_base_gui(40, 40, "frame")
-slot = create_base_gui(24, 24, "slot")
-base.paste(slot, box=(8, 8), mask=slot)
-base = base.resize((8*base.width, 8*base.height), resample= Image.BOX)
-
-base.show()
+# basegui = create_gui(4, 4)
+# base = create_base_gui(26, 26, "frame")
+# slot = create_base_gui(18, 18, "slot")
+# base.paste(slot, box=(4, 4), mask=slot)
+# base = base.resize((8*base.width, 8*base.height), resample= Image.BOX)
+# base.save(f"{DIR}/gui.png")
+# base.show()

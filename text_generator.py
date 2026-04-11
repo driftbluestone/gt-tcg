@@ -1,5 +1,5 @@
 import re
-from PIL import Image
+from PIL import Image, ImageChops
 from pathlib import Path
 DIR = Path(__file__).resolve().parent
 
@@ -38,7 +38,7 @@ text_replace = {
     "|":"pipe"
 }
 
-def generate_text(text: str) -> Image.Image:
+def generate_text(text: str, rgb: tuple[int, int, int] = (255, 255, 255)) -> Image.Image:
     text = list(text)
     text_array = []
     for i in text:
@@ -71,9 +71,14 @@ def generate_text(text: str) -> Image.Image:
             horizontal += im.width + 1
     bbox = text_image.getbbox()
     text_image = text_image.crop((bbox[0], 0, bbox[2], text_image.height))
+    text_image = _tint_rgb(text_image, rgb)
     return text_image
 
-text = "dndndn dn dn dn\nwheeeeee"
-im = generate_text(text)
-im = im.resize((8*im.width, 8*im.height), resample= Image.BOX)
-im.show()
+def _tint_rgb(img: Image.Image, rgb: tuple[int, int, int]) -> Image.Image:
+    img = img.convert("RGBA")
+    r, g, b, a = img.split()
+    rgb_img = Image.merge("RGB", (r, g, b))
+    tint_layer = Image.new("RGB", rgb_img.size, rgb)
+    tinted = ImageChops.multiply(rgb_img, tint_layer)
+    return Image.merge("RGBA", (*tinted.split(), a))
+# im = im.resize((8*im.width, 8*im.height), resample= Image.BOX)
