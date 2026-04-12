@@ -4,20 +4,17 @@
     "base":"frame",
     "fields":[
         {
-            "dimensions":[188, 100],
-            "position":[6, 20],
-            "frame":"slot"
-        }
-    ],
-    "text_fields":[
+            "name":"title",
+            "frame":"frame",
+            "dimensions":[100, 16],
+            "position":[0, 0]
+        },
         {
-            "background":{
-                "frame":"frame",
-                "dimensions":[100, 18]
-            },
-            "position":[0, 0],
-            "text":"test card",
-            "color":[0, 0, 0]
+            "name":"image",
+            "frame":"slot",
+            "dimensions":[188, 100],
+            "position":[6, 18]            
         }
+
     ]
 }

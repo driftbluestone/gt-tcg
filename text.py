@@ -38,7 +38,7 @@ text_replace = {
     "|":"pipe"
 }
 
-def generate_text(text: str, rgb: tuple[int, int, int] = (255, 255, 255)) -> Image.Image:
+def minecraft(text: str, rgb: tuple[int, int, int] = None) -> Image.Image:
     text = list(text)
     text_array = []
     for i in text:
