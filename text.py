@@ -38,7 +38,7 @@ text_replace = {
     "|":"pipe"
 }
 
-def minecraft(text: str, rgb: tuple[int, int, int] = None) -> Image.Image:
+def minecraft(text: str, padding: tuple[int, int] = (0, 0), rgb: tuple[int, int, int] = None) -> Image.Image:
     text = list(text)
     text_array = []
     for i in text:
@@ -71,7 +71,12 @@ def minecraft(text: str, rgb: tuple[int, int, int] = None) -> Image.Image:
             horizontal += im.width + 1
     bbox = text_image.getbbox()
     text_image = text_image.crop((bbox[0], 0, bbox[2], text_image.height))
-    text_image = _tint_rgb(text_image, rgb)
+    padded_text_image = Image.new("RGBA",
+                                  (text_image.width + (padding[0] * 2),
+                                   text_image.height + (padding[1] * 2)),
+                                   (0, 0, 0, 0))
+    padded_text_image.paste(text_image, padding, text_image)
+    text_image = _tint_rgb(padded_text_image, rgb)
     return text_image
 
 def _tint_rgb(img: Image.Image, rgb: tuple[int, int, int]) -> Image.Image:
@@ -81,4 +86,6 @@ def _tint_rgb(img: Image.Image, rgb: tuple[int, int, int]) -> Image.Image:
     tint_layer = Image.new("RGB", rgb_img.size, rgb)
     tinted = ImageChops.multiply(rgb_img, tint_layer)
     return Image.merge("RGBA", (*tinted.split(), a))
+# im = minecraft("test", (1, 1), (0, 0, 0))
 # im = im.resize((8*im.width, 8*im.height), resample= Image.BOX)
+# im.show()

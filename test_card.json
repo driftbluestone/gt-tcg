@@ -1,20 +1,19 @@
 {
     "name":"test",
-    "dimensions":[200, 300],
+    "dimensions":[178, 267],
     "base":"frame",
     "fields":[
         {
             "name":"title",
             "frame":"frame",
-            "dimensions":[100, 16],
+            "dimensions":[90, 16],
             "position":[0, 0]
         },
         {
             "name":"image",
             "frame":"slot",
-            "dimensions":[188, 100],
+            "dimensions":[162, 102],
             "position":[6, 18]            
         }
-
     ]
 }
