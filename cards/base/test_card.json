@@ -1,0 +1,52 @@
+{
+    "dimensions":[178, 267],
+    "base":"frame",
+    "fields":[
+        {
+            "name":"title",
+            "frame":"frame",
+            "dimensions":[90, 16],
+            "position":[0, 0]
+        },
+        {
+            "name":"image",
+            "frame":"slot",
+            "dimensions":[162, 102],
+            "position":[6, 22]            
+        },
+        {
+            "name":"type_1",
+            "frame":"slot",
+            "dimensions":[18, 18],
+            "position":[156, 4]            
+        },
+        {
+            "name":"type_2",
+            "frame":"slot",
+            "dimensions":[18, 18],
+            "position":[138, 4]            
+        },
+        {
+            "name":"type_3",
+            "frame":"slot",
+            "dimensions":[18, 18],
+            "position":[120, 4]            
+        },
+        {
+            "name":"move_1",
+            "position":[12, 126]            
+        },
+        {
+            "name":"move_description_1",
+            "position":[12, 140]            
+        },
+        {
+            "name":"move_2",
+            "position":[12, 164]            
+        },
+        {
+            "name":"move_description_2",
+            "position":[12, 176]            
+        }
+    ]
+}
