@@ -1,5 +1,5 @@
 {
-    "dimensions":[178, 267],
+    "dimensions":[174, 267],
     "base":"frame",
     "fields":[
         {
@@ -18,19 +18,19 @@
             "name":"type_1",
             "frame":"slot",
             "dimensions":[18, 18],
-            "position":[156, 4]            
+            "position":[152, 4]            
         },
         {
             "name":"type_2",
             "frame":"slot",
             "dimensions":[18, 18],
-            "position":[138, 4]            
+            "position":[134, 4]            
         },
         {
             "name":"type_3",
             "frame":"slot",
             "dimensions":[18, 18],
-            "position":[120, 4]            
+            "position":[116, 4]            
         },
         {
             "name":"move_1",
