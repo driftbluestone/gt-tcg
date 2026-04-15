@@ -40,7 +40,7 @@ def _render_line(line, box_width) -> Image.Image:
         text_word = _render_word(word)
         if (box_width is not None) and (text_word.width > box_width):
             return text_line
-        if (box_width is not None) and ((text_word.width + text_line.width) > box_width):
+        if (box_width is not None) and ((text_word.width + text_line.width) > (box_width - 4)):
             new_line = _render_line(line[index:], box_width)
             new_text_image = Image.new('RGBA', (box_width, new_line.height + text_line.height), (0, 0, 0, 0))
             new_text_image.paste(text_line, (0, 0), text_line)
@@ -77,6 +77,8 @@ def _render_word(word: list[str]) -> Image.Image:
     return text_image
 
 def _tint_rgb(img: Image.Image, rgb: tuple[int, int, int]) -> Image.Image:
+    if isinstance(rgb, list):
+        rgb = tuple(rgb)
     img = img.convert("RGBA")
     r, g, b, a = img.split()
     rgb_img = Image.merge("RGB", (r, g, b))

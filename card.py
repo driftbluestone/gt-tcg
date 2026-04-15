@@ -17,8 +17,9 @@ class BaseCard():
             offset = (0, 0)
             if "frame" in field:
                 base, offset = gui_builder.create_base_gui(*field["dimensions"], field["frame"])
-                self.image_field_dimensions[field["name"]] = field["dimensions"]
                 self.image.paste(base, tuple(field["position"]), base)
+            if "dimensions" in field:
+                self.image_field_dimensions[field["name"]] = field["dimensions"]
             field["position"] = [x + y for x, y in zip(field["position"], offset)]
             self.fields[field["name"]] = field["position"]
 
@@ -38,17 +39,15 @@ class BaseCard():
         if wrapping:
             width = self.image_field_dimensions[name][0] if name in self.image_field_dimensions else (self.image.width - self.fields[name][0])
             box_width = width - padding[0]
-            print(box_width)
             box_width = int(box_width / (self.scale * scale))
-            print(box_width)
         else:
             box_width = None
         
         if isinstance(field, str):
             field = text.minecraft(field, color, wrapping, box_width)
-
+        field = field.convert("RGBA")
         if not literal_scale:
-            scale *= im.scale
+            scale *= self.scale
             padding = [x * 8 for x in padding]
         if scale != 1:
             field = field.resize((int(scale * field.width), int(scale * field.height)), resample = Image.BOX)
@@ -73,14 +72,26 @@ class Card(BaseCard):
         with open(f"{DIR}/cards/base/{base_card}.json", "r") as file:
             base_card: dict = json.load(file)
         super().__init__(base_card)
+        if "scale" in card_info:
+            self.resize(card_info["scale"])
+        for field in card_info["fields"]:
+            if "image" in field:
+                with Image.open(f"{DIR}/assets/{field["image"]}") as image:
+                    field["field"] = image.copy()
+                field.pop("image", None)
+            self.set_field(**field)
 
-im = Card({"base":"test_card"})
-im.resize(8)
-im.set_field("title", "Twink Vista", color=(34, 51, 255))
-im.set_field("move_1", "Release Age!")
-# im.set_field("move_2", "idk what to write here")
-im.set_field("move_description_1", "Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away!", padding=(4, -5), scale=0.5)
-# im.set_field("move_description_2", "age release when\nim waiting!!", padding=(5, -5), scale = 0.5)
-
+#im = Card({"base":"test_card"})
+# im.resize(8)
+# im.set_field("title", "Haze Vista", color=(68, 10, 10))
+# with Image.open(f"{DIR}/gui/haze.png") as file:
+#     im.set_field("image", file, scale = 0.391, padding=(30, 0))
+# im.set_field("move_1", "Release Age!")
+# im.set_field("move_2", "Release Age (again)!")
+# im.set_field("move_description_1", "Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away!", padding = (4, -5), scale = 0.5)
+# im.set_field("move_description_2", "Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away! Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away! Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away! Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away! Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away!", padding = (4, -5), scale = 0.5)
+with open(f"{DIR}/haze_card.json", "r") as file:
+    card_info = json.load(file)
+im = Card(card_info)
 im.image.save(f"{DIR}/gui.png")
 im.image.show()

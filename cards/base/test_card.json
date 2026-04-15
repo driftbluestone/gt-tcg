@@ -38,6 +38,7 @@
         },
         {
             "name":"move_description_1",
+            "dimensions":[150, 0],
             "position":[12, 140]            
         },
         {
@@ -46,7 +47,8 @@
         },
         {
             "name":"move_description_2",
-            "position":[12, 176]            
+            "dimensions":[150, 0],
+            "position":[12, 179]            
         }
     ]
 }

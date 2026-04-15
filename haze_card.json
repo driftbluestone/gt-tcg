@@ -1,0 +1,37 @@
+{
+    "base":"test_card",
+    "scale":8,
+    "fields":[
+        {
+            "name":"title",
+            "field":"Haze Vista",
+            "color":[68, 10, 10]
+        },
+        {
+            "name":"move_1",
+            "field":"Release AGE!"
+        },
+        {
+            "name":"move_2",
+            "field":"Release AGE! (again)"
+        },
+        {
+            "name":"move_description_1",
+            "field":"Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away!",
+            "padding":[4, -5],
+            "scale":0.5
+        },
+        {
+            "name":"move_description_2",
+            "field":"Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away!",
+            "padding":[4, -5],
+            "scale":0.5
+        },
+        {
+            "name":"image",
+            "image":"haze.png",
+            "scale":0.391, 
+            "padding":[30, 0]
+        }
+    ]
+}
