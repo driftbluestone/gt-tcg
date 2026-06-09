@@ -81,15 +81,6 @@ class Card(BaseCard):
                 field.pop("image", None)
             self.set_field(**field)
 
-#im = Card({"base":"test_card"})
-# im.resize(8)
-# im.set_field("title", "Haze Vista", color=(68, 10, 10))
-# with Image.open(f"{DIR}/gui/haze.png") as file:
-#     im.set_field("image", file, scale = 0.391, padding=(30, 0))
-# im.set_field("move_1", "Release Age!")
-# im.set_field("move_2", "Release Age (again)!")
-# im.set_field("move_description_1", "Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away!", padding = (4, -5), scale = 0.5)
-# im.set_field("move_description_2", "Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away! Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away! Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away! Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away! Can you believe it, guys? AGE! Just a week away. AGE is in a week! Woohoo! I am so happy about this information. AGE, just a week away. Oh, wow. Can you believe it? AGE! Just in a week! It got here so fast. AGE, just a week away!", padding = (4, -5), scale = 0.5)
 with open(f"{DIR}/haze_card.json", "r") as file:
     card_info = json.load(file)
 im = Card(card_info)

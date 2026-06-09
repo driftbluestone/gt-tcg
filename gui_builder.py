@@ -94,11 +94,3 @@ def create_gui(input_slots: int, output_slots: int) -> Image.Image:
     gui = create_base_gui(width, height, 8)
     gui = add_slots(gui, input_slots, output_slots)
     return gui
-
-# basegui = create_gui(4, 4)
-# base = create_base_gui(26, 26, "frame")
-# slot = create_base_gui(18, 18, "slot")
-# base.paste(slot, box=(4, 4), mask=slot)
-# base = base.resize((8*base.width, 8*base.height), resample= Image.BOX)
-# base.save(f"{DIR}/gui.png")
-# base.show()
