@@ -1,7 +1,7 @@
 # main.py is assumed to be the entry point into any extension, it must be named that.
 import discord
 from discord import app_commands
-from discord.ext import commands
+from api import commands
 from pathlib import Path
 DIR = Path(__file__).parent.absolute()
 
