@@ -81,7 +81,7 @@ class Card(BaseCard):
                 field.pop("image", None)
             self.set_field(**field)
 
-with open(f"{DIR}/haze_card.json", "r") as file:
+with open(f"{DIR}/spear_card.json", "r") as file:
     card_info = json.load(file)
 im = Card(card_info)
 im.image.save(f"{DIR}/gui.png")
